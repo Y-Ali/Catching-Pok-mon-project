@@ -15,7 +15,7 @@ class Pokemon(Player):
     def rest_regain_health(self):
         pass
 
-    def save_player_and_pokemon(self):
+    def save_pokemon(self):
         pass
 
     def load_a_pokemon(self):

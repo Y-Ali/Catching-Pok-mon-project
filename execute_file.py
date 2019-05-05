@@ -16,8 +16,10 @@ from pokemon_class import Pokemon
 #         if capture_pokemon == "y":
 #             print("We've found a", )
 
-b = Player()
+b = Player('','')
 b.ask_for_name()
+#b.load_previous_player()
+
 #b.search_for_pokemon()
 
 

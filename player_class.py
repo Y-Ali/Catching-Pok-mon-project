@@ -4,19 +4,17 @@ from python_to_db_connection import *
 
 class Player:
 
-    def __init__(self):
-        self.name = ''
-        self.city = ''
+    def __init__(self, name, city, caught_pokemon = ''):
+        self.name = name
+        self.city = city
         self.caught_pokemon = []
 
     def ask_for_name(self):
-
         user_name = input("Hi!, What's your name? > ")
         city = input("what city are you from? > ")
 
         self.name = user_name
         self.city = city
-
         self.search_for_pokemon()
 
     def search_for_pokemon(self):
@@ -38,26 +36,31 @@ class Player:
                 if try_can_catch % 2 == 0:
                     self.caught_pokemon.append(get_random_pokemon_name)
                     print(f"We caught a{get_random_pokemon_name}!")
-
                 else:
                     print("failed to catch")
+
             asked = True
-        print("This is the list", self.caught_pokemon)
-        print(type(self.caught_pokemon))
 
-        self.save_player_and_pokemon(get_random_pokemon_name)
+            try_again = input("Would you like to search for another Pokémon?")
+            if try_again == "y":
+                self.search_for_pokemon()
+            elif try_again == "n":
 
-        # try_again = input("Would you like to search for another Pokémon?")
-        # if try_again == "y":
-        #     self.search_for_pokemon()
+
+        #print("This is the list", self.caught_pokemon)
+        #print(type(self.caught_pokemon))
+
+                self.save_player_and_pokemon(get_random_pokemon_name)
+
+
 
     def save_player_and_pokemon(self,get_random_pokemon_name):
         try:
             if get_random_pokemon_name in self.caught_pokemon:
-
+                #print("entered the if statement.....")
                 query = (f"INSERT INTO Player (player_name, city, captured_pokemon)"
-                     f" VALUES ('{self.name}', '{self.city}' '{self.caught_pokemon}' )")
-                print(query)
+                     f" VALUES ('{self.name}', '{self.city}' '{self.caught_pokemon[0]}' )")
+                # print(query)
 
                 cursor.execute(query)
                 pokemon_db.commit()
@@ -71,16 +74,17 @@ class Player:
             print(ermsg)
             raise
 
-    #############################################################################
+    def load_previous_player(self):
         try:
-            player = cursor.execute("SELECT * FROM Player")
+            query = ("SELECT * FROM Player")
+            player = cursor.execute(query)
+
             column = cursor.description
 
-
             for item in player:
-                print(column[0][0], ":", item.player_name, item.city, item.captured_pokemon)
-
-                #Player(item.player_name, item.city, item.captured_list)
+                print(column[0][0]+": " + item.player_name + column[1][0] + ": "
+                                        + item.city + column[2][0] + ": " + item.captured_pokemon)
+                #break
 
             print("\nOperation has been completed.")
 
@@ -88,8 +92,4 @@ class Player:
             print("\nPânico !! ! !! The data has not been read. Please refer to error message.")
             print(ermsg)
             raise
-
-
-    def load_previous_player(self):
-        pass
 

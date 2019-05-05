@@ -1,5 +1,6 @@
 import random
 from pokemonNames.pokemonNames import PokemonNames
+from python_to_db_connection import *
 
 class Player:
 
@@ -11,7 +12,10 @@ class Player:
     def ask_for_name(self):
 
         user_name = input("Hi!, What's your name? > ")
+        city = input("what city are you from? > ")
+
         self.name = user_name
+        self.city = city
 
         self.search_for_pokemon()
 
@@ -39,32 +43,53 @@ class Player:
                     print("failed to catch")
             asked = True
         print("This is the list", self.caught_pokemon)
+        print(type(self.caught_pokemon))
 
-        try_again = input("Would you like to search for another Pokémon?")
-        if try_again == "y":
-            self.search_for_pokemon()
+        self.save_player_and_pokemon(get_random_pokemon_name)
 
-    def save_player_and_pokemon(self):
-        pass
+        # try_again = input("Would you like to search for another Pokémon?")
+        # if try_again == "y":
+        #     self.search_for_pokemon()
+
+    def save_player_and_pokemon(self,get_random_pokemon_name):
+        try:
+            if get_random_pokemon_name in self.caught_pokemon:
+
+                query = (f"INSERT INTO Player (player_name, city, captured_pokemon)"
+                     f" VALUES ('{self.name}', '{self.city}' '{self.caught_pokemon}' )")
+                print(query)
+
+                cursor.execute(query)
+                pokemon_db.commit()
+
+                print("\nTable updated, 1 row affected.")
+            else:
+                pass
+
+        except Exception as ermsg:
+            print ("\nPânico !! ! !!")
+            print(ermsg)
+            raise
+
+    #############################################################################
+        try:
+            player = cursor.execute("SELECT * FROM Player")
+            column = cursor.description
+
+
+            for item in player:
+                print(column[0][0], ":", item.player_name, item.city, item.captured_pokemon)
+
+                #Player(item.player_name, item.city, item.captured_list)
+
+            print("\nOperation has been completed.")
+
+        except Exception as ermsg:
+            print("\nPânico !! ! !! The data has not been read. Please refer to error message.")
+            print(ermsg)
+            raise
+
 
     def load_previous_player(self):
         pass
 
-
-
-
-
-
-
-
-
-
-
-
-
-    def save_player_and_pokemon(self):
-        pass
-
-
-    def load_previous_player(self):
-        pass

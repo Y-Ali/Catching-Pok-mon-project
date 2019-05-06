@@ -17,21 +17,21 @@ class Pokemon:
     def save_pokemon(self, xyz):
         a_pokemon = Player('','')
         a_pokemon.search_for_pokemon('')
+        #
 
-
-        try:
-            query = (f"INSERT INTO Pokemon (pokemon_name)"
-                     f" VALUES ('{xyz}' )")
-
-            cursor.execute(query)
-            pokemon_db.commit()
-
-            print("\nPokemon Table updated, 1 row affected.")
-
-        except Exception as ermsg:
-            print("\nPânico !! ! !!")
-            print(ermsg)
-            raise
+        # try:
+        #     query = (f"INSERT INTO Pokemon (pokemon_name)"
+        #              f" VALUES ('{xyz}' )")
+        
+        #     cursor.execute(query)
+        #     pokemon_db.commit()
+        #
+        #     print("\nPokemon Table updated, 1 row affected.")
+        #
+        # except Exception as ermsg:
+        #     print("\nPânico !! ! !!")
+        #     print(ermsg)
+        #     raise
 
 
     def load_a_pokemon(self):

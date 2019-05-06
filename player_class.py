@@ -8,6 +8,7 @@ class Player:
         self.name = name
         self.city = city
         self.caught_pokemon = []
+        self.all_pokemon = []
 
     def ask_for_name(self):
         user_name = input("Hi!, What's your name? > ")
@@ -20,6 +21,8 @@ class Player:
     def search_for_pokemon(self, get_random_pokemon_name):
         call_pokemon = PokemonNames()
         get_random_pokemon_name = call_pokemon.get_random_name()
+        self.all_pokemon.append(get_random_pokemon_name)
+
 
         #print("generated Pokémon  ----->", get_random_pokemon_name)
         self.__try_to_catch_pokemon(get_random_pokemon_name)
@@ -48,6 +51,9 @@ class Player:
                 self.search_for_pokemon('')
 
             else:
+                #print("entered the second else statement.................")
+                #print("all encountered pokemon: ", self.all_pokemon)
+
                 self.save_player_and_pokemon(get_random_pokemon_name)
 
     def save_player_and_pokemon(self, get_random_pokemon_name):
@@ -62,6 +68,7 @@ class Player:
                 cursor.execute(query)
                 pokemon_db.commit()
                 print("\nTable updated, 1 row affected.")
+
 
         except Exception as ermsg:
             print ("\nPânico !! ! !!")

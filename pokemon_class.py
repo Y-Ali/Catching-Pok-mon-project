@@ -14,16 +14,20 @@ class Pokemon:
     def rest_regain_health(self):
         print("Regaining health, do not disturb...")
 
-    def save_pokemon(self, xyz):
-        a_pokemon = Player('','')
-        a_pokemon.search_for_pokemon('')
-        #
+    # def save_pokemon(self):
+    #     #p = Player()
+    #
+    #     x = p.all_pokemon
+    #
+    #     str2 = ','.join(p)
+    #     print(p)
 
         # try:
-        #     query = (f"INSERT INTO Pokemon (pokemon_name)"
-        #              f" VALUES ('{xyz}' )")
-
-        #     cursor.execute(query)
+        #     query2 = (f"INSERT INTO Pokemon (pokemon_name)"
+        #              f" VALUES ('{str2}' )")
+        #
+        #     print(query2)
+        #     cursor.execute(query2)
         #     pokemon_db.commit()
         #
         #     print("\nPokemon Table updated, 1 row affected.")

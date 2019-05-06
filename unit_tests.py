@@ -15,12 +15,12 @@
 #
 #     def test_player_obj_initiated(self):
 #         self.assertIsInstance(self.play,Player , msg="is it a Player object?")
-#
-#
-#
-#
-#
-#
-#
-#
-#
+
+
+
+
+
+
+
+
+

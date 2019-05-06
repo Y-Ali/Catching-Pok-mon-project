@@ -26,7 +26,7 @@ class Player:
 
     def __try_to_catch_pokemon(self, get_random_pokemon_name):
         asked = False
-        print("We've found a ", get_random_pokemon_name , "!")
+        print("We've found a ", get_random_pokemon_name, "!")
 
         while not asked:
             capture_pokemon = input(f"Do you want to try and capture a {get_random_pokemon_name}!? y/n > ")
@@ -37,8 +37,10 @@ class Player:
                     self.caught_pokemon.append(get_random_pokemon_name)
                     print(f"We caught a {get_random_pokemon_name}!")
                 else:
-                    print("failed to catch")
+                    print("oops...Failed to catch the Pokémon ")
                     #print("---------------------->", self.caught_pokemon)
+            else:
+                continue
             asked = True
 
             try_again = input("Would you like to search for another Pokémon?")
@@ -46,7 +48,6 @@ class Player:
                 self.search_for_pokemon('')
 
             else:
-                print("---------------------->", self.caught_pokemon)
                 self.save_player_and_pokemon(get_random_pokemon_name)
 
     def save_player_and_pokemon(self, get_random_pokemon_name):
@@ -56,7 +57,7 @@ class Player:
 
                 query = (f"INSERT INTO Player (player_name, city, captured_pokemon)"
                      f" VALUES ('{self.name}', '{self.city}', '{str1}' )")
-                #print(query)
+                # print(query)
 
                 cursor.execute(query)
                 pokemon_db.commit()

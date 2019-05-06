@@ -9,10 +9,10 @@ class Pokemon:
         pass
 
     def make_sound_speak(self):
-        pass
+        print("Pika Pika Pikachooooooo ")
 
     def rest_regain_health(self):
-        pass
+        print("Regaining health, do not disturb...")
 
     def save_pokemon(self, xyz):
         a_pokemon = Player('','')
@@ -22,7 +22,7 @@ class Pokemon:
         # try:
         #     query = (f"INSERT INTO Pokemon (pokemon_name)"
         #              f" VALUES ('{xyz}' )")
-        
+
         #     cursor.execute(query)
         #     pokemon_db.commit()
         #

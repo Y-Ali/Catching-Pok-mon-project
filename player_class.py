@@ -4,7 +4,7 @@ from python_to_db_connection import *
 
 class Player:
 
-    def __init__(self, name, city, caught_pokemon = ''):
+    def __init__(self, name, city, caught_pokemon=''):
         self.name = name
         self.city = city
         self.caught_pokemon = []
@@ -36,43 +36,47 @@ class Player:
                 if try_can_catch % 2 == 0:
                     self.caught_pokemon.append(get_random_pokemon_name)
                     print(f"We caught a{get_random_pokemon_name}!")
+                    print("---------------------->",self.caught_pokemon)
                 else:
                     print("failed to catch")
-
+                    print("---------------------->", self.caught_pokemon)
             asked = True
-
+            print("---------------------->", self.caught_pokemon)
             try_again = input("Would you like to search for another Pokémon?")
             if try_again == "y":
+                print("---------------------->", self.caught_pokemon)
                 self.search_for_pokemon()
             elif try_again == "n":
-
-
-        #print("This is the list", self.caught_pokemon)
-        #print(type(self.caught_pokemon))
+                print("---------------------->", self.caught_pokemon)
 
                 self.save_player_and_pokemon(get_random_pokemon_name)
 
 
-
-    def save_player_and_pokemon(self,get_random_pokemon_name):
+    def save_player_and_pokemon(self, get_random_pokemon_name):
         try:
             if get_random_pokemon_name in self.caught_pokemon:
+                print("---------------------->", self.caught_pokemon)
+
+                str1 = ','.join(self.caught_pokemon)
+
+                #print(type(str1))
                 #print("entered the if statement.....")
+
                 query = (f"INSERT INTO Player (player_name, city, captured_pokemon)"
-                     f" VALUES ('{self.name}', '{self.city}' '{self.caught_pokemon[0]}' )")
-                # print(query)
+                     f" VALUES ('{self.name}', '{self.city}', '{str1}' )")
+
+                print(query)
 
                 cursor.execute(query)
                 pokemon_db.commit()
 
                 print("\nTable updated, 1 row affected.")
-            else:
-                pass
 
         except Exception as ermsg:
             print ("\nPânico !! ! !!")
             print(ermsg)
             raise
+
 
     def load_previous_player(self):
         try:

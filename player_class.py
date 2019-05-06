@@ -69,7 +69,6 @@ class Player:
                 pokemon_db.commit()
                 print("\nTable updated, 1 row affected.")
 
-
         except Exception as ermsg:
             print ("\nPânico !! ! !!")
             print(ermsg)

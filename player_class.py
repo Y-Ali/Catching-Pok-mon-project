@@ -15,9 +15,9 @@ class Player:
 
         self.name = user_name
         self.city = city
-        self.search_for_pokemon()
+        self.search_for_pokemon('')
 
-    def search_for_pokemon(self):
+    def search_for_pokemon(self, get_random_pokemon_name):
         call_pokemon = PokemonNames()
         get_random_pokemon_name = call_pokemon.get_random_name()
 
@@ -40,20 +40,18 @@ class Player:
                     print("failed to catch")
                     #print("---------------------->", self.caught_pokemon)
             asked = True
-            #print("---------------------->", self.caught_pokemon)
+
             try_again = input("Would you like to search for another Pokémon?")
             if try_again == "y":
-                self.search_for_pokemon()
+                self.search_for_pokemon('')
 
             else:
                 print("---------------------->", self.caught_pokemon)
-
                 self.save_player_and_pokemon(get_random_pokemon_name)
 
     def save_player_and_pokemon(self, get_random_pokemon_name):
         try:
             if get_random_pokemon_name in self.caught_pokemon:
-
                 str1 = ','.join(self.caught_pokemon)    # cast each item in list to a string.
 
                 query = (f"INSERT INTO Player (player_name, city, captured_pokemon)"
@@ -68,7 +66,6 @@ class Player:
             print ("\nPânico !! ! !!")
             print(ermsg)
             raise
-
 
     def load_previous_player(self):
         try:
@@ -89,7 +86,7 @@ class Player:
                 length = length + 1
                 if length == count:
                     print(column[0][0]+": " + last_row.player_name + column[1][0] + ": "
-                                         + last_row.city + column[2][0] + ": " + last_row.captured_pokemon)
+                                            + last_row.city + column[2][0] + ": " + last_row.captured_pokemon)
                     break
 
             print("\nOperation has been completed.")

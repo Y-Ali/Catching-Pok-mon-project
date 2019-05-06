@@ -5,7 +5,6 @@ class Pokemon:
     def __init__(self):
         self.pokemon_name = ''
 
-
     def pokemon_tackle(self):
         pass
 
@@ -15,14 +14,14 @@ class Pokemon:
     def rest_regain_health(self):
         pass
 
-    def save_pokemon(self):
-        # a_pokemon = Player('','')
-        # #a_pokemon.search_for_pokemon()
+    def save_pokemon(self, xyz):
+        a_pokemon = Player('','')
+        a_pokemon.search_for_pokemon('')
 
 
         try:
             query = (f"INSERT INTO Pokemon (pokemon_name)"
-                     f" VALUES ('{self}' )")
+                     f" VALUES ('{xyz}' )")
 
             cursor.execute(query)
             pokemon_db.commit()
@@ -33,8 +32,6 @@ class Pokemon:
             print("\nPânico !! ! !!")
             print(ermsg)
             raise
-
-
 
 
     def load_a_pokemon(self):

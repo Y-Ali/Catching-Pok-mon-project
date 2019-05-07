@@ -39,7 +39,7 @@ class Player:
 
                 if try_can_catch % 2 == 0:
                     self.caught_pokemon.append(get_random_pokemon_name)
-                    print(f"We caught a {get_random_pokemon_name}!")
+                    print(f"- We caught a {get_random_pokemon_name}!")
                 else:
                     print("oops...Failed to catch the Pokémon ")
                     #print("---------------------->", self.caught_pokemon)
@@ -47,7 +47,7 @@ class Player:
                 continue
             asked = True
 
-            try_again = input("Would you like to search for another Pokémon?")
+            try_again = input("\n-Would you like to search for another Pokémon?")
             if try_again == "y":
                 self.search_for_pokemon('')
 

@@ -29,6 +29,7 @@ class Player:
 
     def __try_to_catch_pokemon(self, get_random_pokemon_name):
         asked = False
+        print("Throwing the Pokeball...!")
         print("We've found a ", get_random_pokemon_name, "!")
 
         while not asked:

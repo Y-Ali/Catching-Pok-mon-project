@@ -21,21 +21,21 @@ class Pokemon:
     #
     #     str2 = ','.join(p)
     #     print(p)
-
-        # try:
-        #     query2 = (f"INSERT INTO Pokemon (pokemon_name)"
-        #              f" VALUES ('{str2}' )")
-        #
-        #     print(query2)
-        #     cursor.execute(query2)
-        #     pokemon_db.commit()
-        #
-        #     print("\nPokemon Table updated, 1 row affected.")
-        #
-        # except Exception as ermsg:
-        #     print("\nPânico !! ! !!")
-        #     print(ermsg)
-        #     raise
+    #
+    #     try:
+    #         query2 = (f"INSERT INTO Pokemon (pokemon_name)"
+    #                  f" VALUES ('{str2}' )")
+    #
+    #         print(query2)
+    #         cursor.execute(query2)
+    #         pokemon_db.commit()
+    #
+    #         print("\nPokemon Table updated, 1 row affected.")
+    #
+    #     except Exception as ermsg:
+    #         print("\nPânico !! ! !!")
+    #         print(ermsg)
+    #         raise
 
 
     def load_a_pokemon(self):
